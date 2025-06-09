@@ -1,0 +1,24 @@
+{
+  "name": "china-weather-visualization",
+  "version": "1.0.0",
+  "description": "An interactive web application for visualizing meteorological data across China using ECharts.",
+  "main": "src/js/main.js",
+  "scripts": {
+    "aggregate": "node scripts/aggregate_data.js",
+    "start": "http-server src"
+  },
+  "dependencies": {
+    "echarts": "^5.3.3",
+    "http-server": "^0.12.3"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "weather",
+    "visualization",
+    "ECharts",
+    "China",
+    "meteorology"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

@@ -1,0 +1,50 @@
+{
+  "weatherData": [
+    {
+      "station": "99999943205",
+      "data": [
+        {
+          "date": "1945-12-31",
+          "temperature": -7.39,
+          "humidity": null,
+          "pressure": 1035.4,
+          "visibility": null,
+          "windSpeed": 0.82,
+          "maxTemp": -6.72,
+          "minTemp": -7.78,
+          "precipitation": 0.0,
+          "snowDepth": null,
+          "weatherType": "Clear"
+        },
+        {
+          "date": "1946-01-01",
+          "temperature": 2.11,
+          "humidity": 1.06,
+          "pressure": 1030.5,
+          "visibility": null,
+          "windSpeed": 6.69,
+          "maxTemp": 4.39,
+          "minTemp": -7.78,
+          "precipitation": null,
+          "snowDepth": null,
+          "weatherType": "Clear"
+        },
+        {
+          "date": "1946-01-02",
+          "temperature": 0.89,
+          "humidity": null,
+          "pressure": 1028.0,
+          "visibility": null,
+          "windSpeed": 8.28,
+          "maxTemp": 6.11,
+          "minTemp": -4.39,
+          "precipitation": null,
+          "snowDepth": null,
+          "weatherType": "Clear"
+        }
+        // Additional data points would follow in the same structure
+      ]
+    }
+    // Additional weather stations would follow in the same structure
+  ]
+}
