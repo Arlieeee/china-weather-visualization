@@ -1,23 +1,27 @@
 {
   "name": "china-weather-visualization",
-  "version": "1.0.0",
-  "description": "An interactive web application for visualizing meteorological data across China using ECharts.",
+  "version": "2.0.0",
+  "description": "An interactive web application for visualizing meteorological data across China using Mapbox GL JS.",
   "main": "src/js/main.js",
   "scripts": {
     "aggregate": "node scripts/aggregate_data.js",
-    "start": "http-server src"
+    "start": "http-server src -p 8080",
+    "dev": "http-server src -p 8080 -o"
   },
   "dependencies": {
     "echarts": "^5.3.3",
-    "http-server": "^0.12.3"
+    "http-server": "^0.12.3",
+    "csv-parser": "^3.0.0"
   },
   "devDependencies": {},
   "keywords": [
     "weather",
     "visualization",
-    "ECharts",
+    "mapbox",
+    "mapbox-gl-js",
     "China",
-    "meteorology"
+    "meteorology",
+    "geospatial"
   ],
   "author": "Your Name",
   "license": "MIT"

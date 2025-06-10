@@ -1,112 +1,58 @@
-// File: /china-weather-visualization/china-weather-visualization/src/js/main.js
+// File: /china-weather-visualization/src/js/main.js
+// Main application entry point for Mapbox GL JS implementation
 
-// Initialize ECharts instance
-const chartDom = document.getElementById('main');
-const myChart = echarts.init(chartDom);
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded. Initializing China Weather Visualization with Mapbox GL JS.");
 
-// Load geographical data for China
-fetch('./assets/china-geo.json')
-    .then(response => response.json())
-    .then(geoData => {
-        // Load aggregated weather data
-        return fetch('./assets/aggregated_weather_data.json')
-            .then(response => response.json())
-            .then(weatherData => {
-                // Set up the map option
-                const option = {
-                    title: {
-                        text: 'Meteorological Data Visualization',
-                        subtext: 'Temperature Changes from 1942 to 2024',
-                        left: 'center'
-                    },
-                    tooltip: {
-                        trigger: 'item',
-                        formatter: function (params) {
-                            return `${params.name}<br/>Temperature: ${params.value[2]}°C`;
-                        }
-                    },
-                    visualMap: {
-                        min: -10,
-                        max: 40,
-                        left: 'left',
-                        top: 'bottom',
-                        text: ['High', 'Low'],
-                        calculable: true,
-                        inRange: {
-                            color: ['#67f0c1', '#ffcc00', '#ff0000']
-                        }
-                    },
-                    series: [
-                        {
-                            name: 'Temperature',
-                            type: 'map',
-                            map: 'china',
-                            roam: true,
-                            label: {
-                                show: true
-                            },
-                            data: weatherData.map(item => ({
-                                name: item.province,
-                                value: item.temperature
-                            }))
-                        }
-                    ]
-                };
-
-                // Set the option and render the chart
-                myChart.setOption(option);
-
-                // Handle window resize
-                window.addEventListener('resize', myChart.resize);
-            });
-    })
-    .catch(error => console.error('Error loading data:', error));
-
-// Animation control (play, pause, fast forward)
-let animationInterval;
-let currentYear = 1942;
-
-function startAnimation() {
-    animationInterval = setInterval(() => {
-        if (currentYear <= 2024) {
-            updateDataForYear(currentYear);
-            currentYear++;
-        } else {
-            clearInterval(animationInterval);
-        }
-    }, 1000); // Update every second
-}
-
-function pauseAnimation() {
-    clearInterval(animationInterval);
-}
-
-function fastForward() {
-    currentYear += 5; // Skip 5 years
-    if (currentYear > 2024) {
-        currentYear = 2024;
+    // Check if Mapbox GL is available
+    if (typeof mapboxgl === 'undefined') {
+        console.error("Mapbox GL JS not loaded. Please check your internet connection and script tags.");
+        document.getElementById('map').innerHTML = '<div style="color: red; padding: 20px;">Mapbox GL JS failed to load. Please check your internet connection.</div>';
+        return;
     }
-    updateDataForYear(currentYear);
-}
 
-function updateDataForYear(year) {
-    // Fetch and update data for the specified year
-    fetch('./assets/aggregated_weather_data.json')
-        .then(response => response.json())
-        .then(weatherData => {
-            const filteredData = weatherData.filter(item => item.year === year);
-            myChart.setOption({
-                series: [{
-                    data: filteredData.map(item => ({
-                        name: item.province,
-                        value: item.temperature
-                    }))
-                }]
-            });
+    // Initialize the Mapbox map
+    if (window.mapboxMapModule && typeof window.mapboxMapModule.initializeMap === 'function') {
+        window.mapboxMapModule.initializeMap(() => {
+            console.log("Mapbox map initialized successfully. Setting up UI and animation controls.");
+            
+            // Initialize UI event listeners
+            if (window.uiModule && typeof window.uiModule.setupUIEventListeners === 'function') {
+                window.uiModule.setupUIEventListeners();
+            } else {
+                console.warn("UI module not found");
+            }
+
+            // Initialize animation controls
+            if (window.animationModule && typeof window.animationModule.setupAnimationControls === 'function') {
+                window.animationModule.setupAnimationControls();
+            } else {
+                console.warn("Animation module not found");
+            }
+
+            // Display initial state
+            console.log("Application initialized successfully");
         });
-}
+    } else {
+        console.error("Mapbox map module not found. Map cannot be initialized.");
+        document.getElementById('map').innerHTML = '<div style="color: red; padding: 20px;">Error: Map module failed to load.</div>';
+    }
+});
 
-// Event listeners for animation controls
-document.getElementById('playButton').addEventListener('click', startAnimation);
-document.getElementById('pauseButton').addEventListener('click', pauseAnimation);
-document.getElementById('fastForwardButton').addEventListener('click', fastForward);
+// Global error handler
+window.addEventListener('error', (e) => {
+    console.error('Global error:', e.error);
+    if (e.error && e.error.message && e.error.message.includes('mapbox')) {
+        document.getElementById('map').innerHTML = '<div style="color: red; padding: 20px;">Mapbox error detected. Please check your access token and internet connection.</div>';
+    }
+});
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    if (window.mapboxMapModule && window.mapboxMapModule.getMapInstance) {
+        const map = window.mapboxMapModule.getMapInstance();
+        if (map) {
+            map.resize();
+        }
+    }
+});

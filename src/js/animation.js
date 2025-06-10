@@ -1,41 +1,124 @@
-// File: /china-weather-visualization/china-weather-visualization/src/js/animation.js
+// File: /china-weather-visualization/src/js/animation.js
+// Animation controls for Mapbox GL JS implementation
 
 let currentYear = 1942;
 let animationInterval;
-const totalYears = 83; // From 1942 to 2024
+let isPlaying = false;
+const minYear = 1942;
+const maxYear = 2024;
+
+function updateVisualizationForYear(year) {
+    // Update UI elements
+    document.getElementById('current-year-display').textContent = year;
+    document.getElementById('time-range-slider').value = year;
+
+    // Get current data type
+    const dataType = document.getElementById('data-type').value;
+
+    // Update map visualization
+    if (window.mapboxMapModule && typeof window.mapboxMapModule.updateMapVisualization === 'function') {
+        window.mapboxMapModule.updateMapVisualization(year, dataType);
+    } else {
+        console.warn("Mapbox module or update function not available");
+    }
+}
 
 function startAnimation() {
+    if (isPlaying) return;
+    
+    isPlaying = true;
+    document.getElementById('play').disabled = true;
+    document.getElementById('pause').disabled = false;
+    
     animationInterval = setInterval(() => {
-        if (currentYear <= 2024) {
-            updateTemperatureData(currentYear);
+        if (currentYear <= maxYear) {
+            updateVisualizationForYear(currentYear);
             currentYear++;
         } else {
-            clearInterval(animationInterval);
+            stopAnimation();
+            currentYear = minYear; // Reset for next play
         }
-    }, 1000); // Update every second
+    }, 500); // Update every 500ms for smoother animation
 }
 
 function pauseAnimation() {
+    isPlaying = false;
     clearInterval(animationInterval);
+    document.getElementById('play').disabled = false;
+    document.getElementById('pause').disabled = true;
+}
+
+function stopAnimation() {
+    pauseAnimation();
+    currentYear = minYear;
 }
 
 function fastForward() {
-    clearInterval(animationInterval);
-    currentYear += 5; // Fast forward by 5 years
-    if (currentYear > 2024) {
-        currentYear = 2024;
+    if (isPlaying) {
+        pauseAnimation();
     }
-    updateTemperatureData(currentYear);
+    
+    currentYear += 5; // Fast forward by 5 years
+    if (currentYear > maxYear) {
+        currentYear = maxYear;
+    }
+    updateVisualizationForYear(currentYear);
 }
 
-function updateTemperatureData(year) {
-    // Fetch and update the temperature data for the given year
-    // This function should interact with the data.js to get the relevant data
-    console.log(`Updating data for year: ${year}`);
-    // Example: fetchDataForYear(year);
+function setupAnimationControls() {
+    // Set initial year
+    currentYear = minYear;
+    updateVisualizationForYear(currentYear);
+
+    // Play button
+    const playButton = document.getElementById('play');
+    if (playButton) {
+        playButton.addEventListener('click', startAnimation);
+    }
+
+    // Pause button
+    const pauseButton = document.getElementById('pause');
+    if (pauseButton) {
+        pauseButton.addEventListener('click', pauseAnimation);
+        pauseButton.disabled = true; // Initially disabled
+    }
+
+    // Fast forward button
+    const ffButton = document.getElementById('fast-forward');
+    if (ffButton) {
+        ffButton.addEventListener('click', fastForward);
+    }
+
+    // Time range slider
+    const timeSlider = document.getElementById('time-range-slider');
+    if (timeSlider) {
+        timeSlider.addEventListener('input', (e) => {
+            if (isPlaying) {
+                pauseAnimation();
+            }
+            currentYear = parseInt(e.target.value);
+            updateVisualizationForYear(currentYear);
+        });
+    }
+
+    // Data type selector
+    const dataTypeSelect = document.getElementById('data-type');
+    if (dataTypeSelect) {
+        dataTypeSelect.addEventListener('change', (e) => {
+            const newDataType = e.target.value;
+            updateVisualizationForYear(currentYear);
+        });
+    }
+
+    console.log("Animation controls initialized");
 }
 
-// Event listeners for UI controls
-document.getElementById('playButton').addEventListener('click', startAnimation);
-document.getElementById('pauseButton').addEventListener('click', pauseAnimation);
-document.getElementById('fastForwardButton').addEventListener('click', fastForward);
+// Expose functions to be called by other modules
+window.animationModule = {
+    setupAnimationControls,
+    startAnimation,
+    pauseAnimation,
+    fastForward,
+    updateVisualizationForYear,
+    getCurrentYear: () => currentYear
+};

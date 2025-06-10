@@ -1,50 +1,299 @@
 {
   "weatherData": [
     {
-      "station": "99999943205",
+      "station": "54511",
+      "province": "Beijing",
       "data": [
         {
           "date": "1945-12-31",
-          "temperature": -7.39,
-          "humidity": null,
-          "pressure": 1035.4,
-          "visibility": null,
-          "windSpeed": 0.82,
-          "maxTemp": -6.72,
-          "minTemp": -7.78,
+          "temperature": -2.3,
+          "humidity": 65,
+          "pressure": 1020.4,
+          "visibility": 15,
+          "windSpeed": 2.8,
+          "maxTemp": 1.2,
+          "minTemp": -5.8,
           "precipitation": 0.0,
           "snowDepth": null,
           "weatherType": "Clear"
         },
         {
           "date": "1946-01-01",
-          "temperature": 2.11,
-          "humidity": 1.06,
-          "pressure": 1030.5,
-          "visibility": null,
-          "windSpeed": 6.69,
-          "maxTemp": 4.39,
-          "minTemp": -7.78,
-          "precipitation": null,
+          "temperature": -1.1,
+          "humidity": 70,
+          "pressure": 1018.5,
+          "visibility": 12,
+          "windSpeed": 3.2,
+          "maxTemp": 2.4,
+          "minTemp": -4.6,
+          "precipitation": 0.5,
           "snowDepth": null,
-          "weatherType": "Clear"
+          "weatherType": "Cloudy"
         },
         {
-          "date": "1946-01-02",
-          "temperature": 0.89,
-          "humidity": null,
-          "pressure": 1028.0,
-          "visibility": null,
-          "windSpeed": 8.28,
-          "maxTemp": 6.11,
-          "minTemp": -4.39,
-          "precipitation": null,
+          "date": "2024-01-01",
+          "temperature": 1.5,
+          "humidity": 68,
+          "pressure": 1025.0,
+          "visibility": 18,
+          "windSpeed": 2.1,
+          "maxTemp": 4.2,
+          "minTemp": -1.8,
+          "precipitation": 0.0,
           "snowDepth": null,
           "weatherType": "Clear"
         }
-        // Additional data points would follow in the same structure
+      ]
+    },
+    {
+      "station": "58362",
+      "province": "Shanghai",
+      "data": [
+        {
+          "date": "1945-12-31",
+          "temperature": 8.5,
+          "humidity": 75,
+          "pressure": 1015.2,
+          "visibility": 20,
+          "windSpeed": 4.1,
+          "maxTemp": 12.3,
+          "minTemp": 4.7,
+          "precipitation": 2.1,
+          "snowDepth": null,
+          "weatherType": "Rain"
+        },
+        {
+          "date": "1946-01-01",
+          "temperature": 9.2,
+          "humidity": 78,
+          "pressure": 1013.8,
+          "visibility": 15,
+          "windSpeed": 3.8,
+          "maxTemp": 13.1,
+          "minTemp": 5.3,
+          "precipitation": 1.8,
+          "snowDepth": null,
+          "weatherType": "Cloudy"
+        },
+        {
+          "date": "2024-01-01",
+          "temperature": 12.8,
+          "humidity": 72,
+          "pressure": 1018.5,
+          "visibility": 22,
+          "windSpeed": 3.5,
+          "maxTemp": 16.2,
+          "minTemp": 9.4,
+          "precipitation": 0.3,
+          "snowDepth": null,
+          "weatherType": "Clear"
+        }
+      ]
+    },
+    {
+      "station": "59287",
+      "province": "Guangdong",
+      "data": [
+        {
+          "date": "1945-12-31",
+          "temperature": 18.7,
+          "humidity": 82,
+          "pressure": 1012.1,
+          "visibility": 25,
+          "windSpeed": 2.5,
+          "maxTemp": 23.4,
+          "minTemp": 14.0,
+          "precipitation": 5.2,
+          "snowDepth": null,
+          "weatherType": "Rain"
+        },
+        {
+          "date": "1946-01-01",
+          "temperature": 19.3,
+          "humidity": 85,
+          "pressure": 1010.8,
+          "visibility": 20,
+          "windSpeed": 2.8,
+          "maxTemp": 24.1,
+          "minTemp": 14.5,
+          "precipitation": 8.7,
+          "snowDepth": null,
+          "weatherType": "Heavy Rain"
+        },
+        {
+          "date": "2024-01-01",
+          "temperature": 22.1,
+          "humidity": 79,
+          "pressure": 1014.2,
+          "visibility": 28,
+          "windSpeed": 2.2,
+          "maxTemp": 26.8,
+          "minTemp": 17.4,
+          "precipitation": 2.1,
+          "snowDepth": null,
+          "weatherType": "Partly Cloudy"
+        }
+      ]
+    },
+    {
+      "station": "56294",
+      "province": "Sichuan",
+      "data": [
+        {
+          "date": "1945-12-31",
+          "temperature": 6.2,
+          "humidity": 88,
+          "pressure": 952.3,
+          "visibility": 8,
+          "windSpeed": 1.5,
+          "maxTemp": 10.1,
+          "minTemp": 2.3,
+          "precipitation": 12.4,
+          "snowDepth": null,
+          "weatherType": "Heavy Rain"
+        },
+        {
+          "date": "2024-01-01",
+          "temperature": 8.9,
+          "humidity": 85,
+          "pressure": 955.8,
+          "visibility": 12,
+          "windSpeed": 1.8,
+          "maxTemp": 13.2,
+          "minTemp": 4.6,
+          "precipitation": 8.7,
+          "snowDepth": null,
+          "weatherType": "Rain"
+        }
+      ]
+    },
+    {
+      "station": "51463",
+      "province": "Xinjiang",
+      "data": [
+        {
+          "date": "1945-12-31",
+          "temperature": -18.5,
+          "humidity": 45,
+          "pressure": 890.2,
+          "visibility": 30,
+          "windSpeed": 5.2,
+          "maxTemp": -12.3,
+          "minTemp": -24.7,
+          "precipitation": 0.0,
+          "snowDepth": 15,
+          "weatherType": "Clear"
+        },
+        {
+          "date": "2024-01-01",
+          "temperature": -15.2,
+          "humidity": 48,
+          "pressure": 893.5,
+          "visibility": 35,
+          "windSpeed": 4.8,
+          "maxTemp": -9.1,
+          "minTemp": -21.3,
+          "precipitation": 0.0,
+          "snowDepth": 12,
+          "weatherType": "Clear"
+        }
+      ]
+    },
+    {
+      "station": "55591",
+      "province": "Tibet",
+      "data": [
+        {
+          "date": "1945-12-31",
+          "temperature": -12.8,
+          "humidity": 25,
+          "pressure": 650.1,
+          "visibility": 50,
+          "windSpeed": 8.2,
+          "maxTemp": -5.2,
+          "minTemp": -20.4,
+          "precipitation": 0.0,
+          "snowDepth": 8,
+          "weatherType": "Clear"
+        },
+        {
+          "date": "2024-01-01",
+          "temperature": -9.5,
+          "humidity": 28,
+          "pressure": 652.8,
+          "visibility": 55,
+          "windSpeed": 7.8,
+          "maxTemp": -2.1,
+          "minTemp": -17.0,
+          "precipitation": 0.0,
+          "snowDepth": 5,
+          "weatherType": "Clear"
+        }
+      ]
+    },
+    {
+      "station": "50953",
+      "province": "Heilongjiang",
+      "data": [
+        {
+          "date": "1945-12-31",
+          "temperature": -25.3,
+          "humidity": 55,
+          "pressure": 1035.2,
+          "visibility": 15,
+          "windSpeed": 6.5,
+          "maxTemp": -18.7,
+          "minTemp": -31.9,
+          "precipitation": 0.0,
+          "snowDepth": 45,
+          "weatherType": "Clear"
+        },
+        {
+          "date": "2024-01-01",
+          "temperature": -22.1,
+          "humidity": 58,
+          "pressure": 1038.5,
+          "visibility": 18,
+          "windSpeed": 5.8,
+          "maxTemp": -15.3,
+          "minTemp": -28.7,
+          "precipitation": 0.0,
+          "snowDepth": 38,
+          "weatherType": "Partly Cloudy"
+        }
+      ]
+    },
+    {
+      "station": "59758",
+      "province": "Hainan",
+      "data": [
+        {
+          "date": "1945-12-31",
+          "temperature": 24.8,
+          "humidity": 88,
+          "pressure": 1008.5,
+          "visibility": 25,
+          "windSpeed": 4.2,
+          "maxTemp": 28.9,
+          "minTemp": 20.7,
+          "precipitation": 15.2,
+          "snowDepth": null,
+          "weatherType": "Thunderstorm"
+        },
+        {
+          "date": "2024-01-01",
+          "temperature": 26.5,
+          "humidity": 85,
+          "pressure": 1011.2,
+          "visibility": 30,
+          "windSpeed": 3.8,
+          "maxTemp": 30.1,
+          "minTemp": 22.9,
+          "precipitation": 8.4,
+          "snowDepth": null,
+          "weatherType": "Rain"
+        }
       ]
     }
-    // Additional weather stations would follow in the same structure
   ]
 }
